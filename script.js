@@ -105,16 +105,6 @@ const details = {
     `,
   ],
 
-  menus: [
-    "Menús",
-    "Los textos de navegación deben ser breves, claros y coherentes con el contenido al que llevan.",
-  ],
-
-  pages: [
-    "Páginas del sitio",
-    "Traduzco y adapto el contenido al español LATAM, considerando su contexto y el espacio donde aparecerá.",
-  ],
-
   docs: [
     "Documentos recibidos por Mattermost",
     `
@@ -158,16 +148,17 @@ const details = {
   aliasExample: [
     "ALIAS",
     `
-      <img
-        src="images/alias.png"
-        alt="URL con los alias revoke-credit-line y events resaltados"
-      />
-    `,
-    `
-      <img
-        src="images/alias2.png"
-        alt="URL con los alias revoke-credit-line y events resaltados"
-      />
+      <div style="display: grid; gap: 24px;">
+        <img
+          src="images/alias.png"
+          alt="Primer ejemplo de alias en una URL"
+        />
+
+        <img
+          src="images/alias2.png"
+          alt="Segundo ejemplo de alias en una URL"
+        />
+      </div>
     `,
   ],
 
@@ -204,8 +195,6 @@ const details = {
 
 /* =========================================
    ELEMENTOS Y ESTADO
-   Los títulos se toman del HTML para que
-   el índice siga el orden de las diapositivas.
    ========================================= */
 
 const slides = [...document.querySelectorAll(".slide")];
@@ -227,6 +216,10 @@ const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const outlineButton = document.getElementById("outline");
 const resetButton = document.getElementById("reset");
+
+const revealButtons = [
+  ...document.querySelectorAll("[data-reveal]"),
+];
 
 let current = 0;
 
@@ -253,7 +246,7 @@ titles.forEach((title, index) => {
 });
 
 function go(index) {
-  if (!Number.isInteger(index)) return;
+  if (!Number.isInteger(index) || slides.length === 0) return;
 
   current = Math.max(0, Math.min(slides.length - 1, index));
 
@@ -267,7 +260,10 @@ function go(index) {
     const isCurrent = buttonIndex === current;
 
     button.classList.toggle("active", isCurrent);
-    button.setAttribute("aria-current", isCurrent ? "step" : "false");
+    button.setAttribute(
+      "aria-current",
+      isCurrent ? "step" : "false",
+    );
   });
 
   barTitle.textContent = titles[current].toUpperCase();
@@ -306,7 +302,7 @@ function openDetail(key) {
   }
 
   modalTitle.textContent = detail[0];
-  modalBody.innerHTML = detail[1];
+  modalBody.innerHTML = detail.slice(1).join("");
 
   showModal();
 }
@@ -323,27 +319,45 @@ function closeModal() {
   modal.close();
 }
 
-document.querySelectorAll("[data-detail]").forEach((button) => {
-  if (button.classList.contains("check")) {
-    button.setAttribute("aria-pressed", "false");
-  }
+/* =========================================
+   PALOMITAS Y BOTONES CON DETALLES
 
-  button.addEventListener("click", () => {
-    const key = button.dataset.detail;
+   .check sin data-detail:
+   Solo marca la palomita en azul.
 
-    if (!details[key]) {
-      console.warn(`Revisa el nombre data-detail="${key}" en el HTML.`);
-      return;
+   .check con data-detail:
+   Marca la palomita y abre su ventana.
+
+   Otros botones con data-detail:
+   Abren su ventana.
+   ========================================= */
+
+document
+  .querySelectorAll(".check, [data-detail]")
+  .forEach((button) => {
+    const isCheck = button.classList.contains("check");
+
+    if (isCheck) {
+      button.setAttribute(
+        "aria-pressed",
+        button.classList.contains("done") ? "true" : "false",
+      );
     }
 
-    if (button.classList.contains("check")) {
-      button.classList.add("done");
-      button.setAttribute("aria-pressed", "true");
-    }
+    button.addEventListener("click", () => {
+      if (isCheck) {
+        button.classList.add("done");
+        button.setAttribute("aria-pressed", "true");
+      }
 
-    openDetail(key);
+      const key = button.dataset.detail;
+
+      // Sin data-detail, la acción termina al marcar el tick.
+      if (!key) return;
+
+      openDetail(key);
+    });
   });
-});
 
 closeButton.addEventListener("click", closeModal);
 
@@ -396,12 +410,7 @@ outlineButton.addEventListener("click", () => {
 
 /* =========================================
    VENTANITAS DE ARTÍCULOS, MENÚS Y CATEGORÍAS
-   Los textos y colores están en HTML y CSS.
    ========================================= */
-
-const revealButtons = [
-  ...document.querySelectorAll("[data-reveal]"),
-];
 
 function closePopup(id, restoreFocus = false) {
   const popup = document.getElementById(id);
@@ -435,7 +444,8 @@ revealButtons.forEach((button) => {
 
     if (!popup) return;
 
-    const wasOpen = button.getAttribute("aria-expanded") === "true";
+    const wasOpen =
+      button.getAttribute("aria-expanded") === "true";
 
     closeAllPopups();
 
@@ -454,7 +464,7 @@ document.querySelectorAll("[data-hide]").forEach((button) => {
   });
 });
 
-/* Cerrar las ventanitas al pulsar fuera de sus tarjetas. */
+/* Cerrar al pulsar fuera de las tarjetas. */
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".concept-card")) {
     closeAllPopups();
@@ -551,12 +561,10 @@ resetButton.addEventListener("click", () => {
 
 /* =========================================
    TECLADO
-   Flechas: cambiar diapositiva.
-   Escape: cerrar una ventanita de color.
-   El diálogo general admite Escape de forma nativa.
    ========================================= */
 
 document.addEventListener("keydown", (event) => {
+  // El diálogo general se cierra con Escape de forma nativa.
   if (modal.open) return;
 
   if (event.key === "Escape") {
