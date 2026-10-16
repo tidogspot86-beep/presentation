@@ -1,0 +1,1160 @@
+/* =========================================
+   COLORES Y CONFIGURACIÓN GENERAL
+   ========================================= */
+
+:root {
+  --ink: #535269;
+  --line: #666674;
+  --yellow: #f5dda0;
+  --lilac: #dddafa;
+  --pink: #f2bce8;
+  --blue: #3977d5;
+  --peach: #f4c89c;
+  --sky: #b8e2f4;
+  --green: #dbefbf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+  background-color: var(--yellow);
+  background-image:
+    linear-gradient(#fff8 1px, transparent 1px),
+    linear-gradient(90deg, #fff8 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 4px solid var(--blue);
+  outline-offset: 4px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   ENCABEZADO E ÍNDICE
+   ========================================= */
+
+header {
+  width: min(1360px, 92vw);
+  margin: auto;
+  padding: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.smallbtn {
+  display: inline-block;
+  background: #fff9;
+  border: 2px solid var(--line);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.smallbtn:hover {
+  background: var(--lilac);
+}
+
+#outline {
+  font-weight: 700;
+  padding: 10px 18px;
+}
+
+/* =========================================
+   VENTANA PRINCIPAL
+   ========================================= */
+
+.window {
+  width: min(1360px, 92vw);
+  margin: 8px auto 30px;
+  background: white;
+  border: 4px solid var(--line);
+  border-radius: 8px;
+  box-shadow:
+    12px 12px 0 var(--pink),
+    15px 15px 0 var(--line);
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 23px;
+  background: var(--lilac);
+  border-bottom: 4px solid var(--line);
+}
+
+.dots {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.dots i {
+  display: block;
+  width: 23px;
+  height: 23px;
+  background: white;
+  border: 3px solid var(--line);
+  border-radius: 50%;
+}
+
+.bar-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+/* =========================================
+   DIAPOSITIVAS Y TIPOGRAFÍA
+   ========================================= */
+
+.slide {
+  display: none;
+  min-height: 570px;
+  padding: 36px 45px;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide.active>* {
+  animation: arrive 0.42s both;
+}
+
+.slide.active>*:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.slide.active>*:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+h1,
+h2,
+h3 {
+  font-family:
+    "Arial Rounded MT Bold",
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
+  font-weight: 900;
+}
+
+h1 {
+  margin: 25px 0;
+  font-size: clamp(40px, 5.3vw, 76px);
+  line-height: 1.06;
+  letter-spacing: -2px;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 3vw, 43px);
+  line-height: 1.12;
+  letter-spacing: -1px;
+}
+
+h3 {
+  margin: 0 0 17px;
+  font-size: 25px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.highlight {
+  background: linear-gradient(transparent 66%, var(--pink) 0);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hint {
+  font-size: 13px;
+  color: #777184;
+  line-height: 1.4;
+}
+
+/* =========================================
+   PORTADA
+   ========================================= */
+
+.intro {
+  position: relative;
+  padding-top: 42px;
+  text-align: center;
+}
+
+.intro p {
+  max-width: 680px;
+  margin: 22px auto;
+}
+
+.sticker {
+  display: inline-grid;
+  place-items: center;
+  width: 69px;
+  height: 69px;
+  font-size: 31px;
+  background: var(--pink);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 4px 4px var(--lilac);
+  rotate: -10deg;
+}
+
+/* =========================================
+   BOTONES PRINCIPALES
+   ========================================= */
+
+.mainbtn {
+  display: inline-block;
+  padding: 14px 24px;
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+  background: var(--lilac);
+  border: 3px solid var(--line);
+  border-radius: 7px;
+  box-shadow: 4px 4px var(--line);
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.mainbtn:hover {
+  transform: translateY(-2px);
+  background: var(--pink);
+}
+
+/* =========================================
+   COLUMNAS Y PANELES
+   ========================================= */
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 27px;
+}
+
+.split>* {
+  min-width: 0;
+}
+
+.panel {
+  padding: 24px;
+  background: #fffdf7;
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 5px 5px var(--lilac);
+}
+
+.panel.pink {
+  background: #fff0fc;
+}
+
+.panel.peach {
+  background: #fff3e4;
+}
+
+.tag {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  background: var(--yellow);
+  border-radius: 5px;
+}
+
+.callout {
+  margin-top: 25px;
+  padding: 19px 23px;
+  font-size: 18px;
+  line-height: 1.5;
+  background: var(--pink);
+  border: 3px solid var(--line);
+  box-shadow: 5px 5px var(--lilac);
+}
+
+/* =========================================
+   ACTIVIDADES CON PALOMITAS
+   ========================================= */
+
+.checks {
+  display: grid;
+  gap: 9px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #ddd9e5;
+}
+
+.tick {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: #9c9ba7;
+  font-size: 23px;
+  background: white;
+  border: 2px solid var(--line);
+  border-radius: 7px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.check:hover .tick {
+  border-color: var(--blue);
+}
+
+.check.done .tick {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* =========================================
+   IMÁGENES Y CAPTURAS
+   ========================================= */
+
+.imagebtn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: white;
+  border: 2px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.imagebtn img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.editor {
+  position: relative;
+  max-width: 1020px;
+  margin: auto;
+  border: 2px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.editor img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hot {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  padding: 0;
+  color: white;
+  font-weight: bold;
+  background: var(--ink);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #f2bce89c;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.hot:hover,
+.hot:focus-visible {
+  background: var(--blue);
+  transform: scale(1.1);
+}
+
+.editor-caption {
+  max-width: 1020px;
+  min-height: 56px;
+  margin: 17px auto 0;
+  font-size: 17px;
+}
+
+.menu-screenshot {
+  max-width: 1100px;
+  margin: 25px auto;
+}
+
+/* =========================================
+   INTRODUCCIÓN A JOOMLA
+   ========================================= */
+
+.joomla-intro {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  margin-top: 45px;
+}
+
+.joomla-tools {
+  padding: 10px;
+}
+
+.joomla-list {
+  display: grid;
+  gap: 25px;
+  margin: 28px 0;
+  padding-left: 32px;
+  font-size: 28px;
+}
+
+.joomla-list li {
+  padding-left: 6px;
+}
+
+.text-trigger {
+  padding: 4px 8px;
+  margin-left: -8px;
+  font: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px dashed var(--ink);
+  border-radius: 4px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.text-trigger:hover {
+  color: var(--blue);
+  background: var(--lilac);
+}
+
+/* =========================================
+   ARTÍCULOS, MENÚS Y CATEGORÍAS
+   ========================================= */
+
+.joomla-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 28px;
+  padding: 10px 0 15px;
+}
+
+.concept-card {
+  position: relative;
+  min-width: 0;
+  background: white;
+  border: 4px solid var(--line);
+  box-shadow: 8px 8px var(--lilac);
+}
+
+.concept-orange {
+  --concept-color: var(--peach);
+}
+
+.concept-blue {
+  --concept-color: var(--sky);
+}
+
+.concept-green {
+  --concept-color: var(--green);
+}
+
+.concept-bar {
+  padding: 23px 18px;
+  background: var(--concept-color);
+  border-bottom: 4px solid var(--line);
+}
+
+.concept-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 410px;
+  padding: 28px 14px 22px;
+  text-align: center;
+}
+
+.concept-content h2 {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 36px);
+  letter-spacing: -1px;
+  overflow-wrap: anywhere;
+}
+
+.concept-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: min(190px, 85%);
+  aspect-ratio: 1;
+  margin: 65px 0 28px;
+  padding: 35px;
+  background: var(--concept-color);
+  border: 0;
+  border-radius: 50%;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.concept-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.concept-icon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 0 #53526920;
+}
+
+.concept-icon[aria-expanded="true"] {
+  box-shadow: 0 0 0 4px var(--ink);
+}
+
+.concept-next {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-top: auto;
+  padding: 0;
+  color: white;
+  font-size: 30px;
+  background: var(--ink);
+  border: 0;
+  border-radius: 50%;
+}
+
+.concept-next:hover {
+  background: var(--blue);
+}
+
+/* Ventanas de color que aparecen al pulsar los iconos. */
+
+.concept-popup {
+  position: absolute;
+  top: 85px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+  max-height: calc(100% - 95px);
+  padding: 34px 18px 20px;
+  color: #252535;
+  text-align: left;
+  background: var(--concept-color);
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 5px 5px #53526930;
+  overflow-y: auto;
+  animation: popupAppear 0.22s ease-out;
+}
+
+.concept-popup p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 24px;
+  background: #ffffff80;
+  border: 0;
+  border-radius: 50%;
+}
+
+.popup-close:hover {
+  background: white;
+}
+
+/* =========================================
+   MENÚS Y TABLA DE CROWDIN
+   ========================================= */
+
+.mini-window {
+  background: white;
+  border: 3px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.mini-bar {
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  background: var(--lilac);
+  border-bottom: 3px solid var(--line);
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  font-size: 21px;
+  text-align: left;
+  background: white;
+  border: 0;
+  border-bottom: 1px solid #d8d1df;
+}
+
+.menu-item:hover {
+  background: #fff3de;
+}
+
+.menu-item::after {
+  content: "＋";
+  float: right;
+  margin-left: 8px;
+}
+
+.string {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 17px 20px;
+  font-size: 19px;
+  border-bottom: 1px solid #e5dfed;
+}
+
+.string.header {
+  font-size: 12px;
+  text-transform: uppercase;
+  background: #f6f5fc;
+}
+
+.string span:last-child {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.bubble {
+  width: 70px;
+  height: 70px;
+  margin-top: 18px;
+  padding: 0;
+  font-size: 30px;
+  background: var(--pink);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 4px 4px var(--line);
+  transition: transform 0.2s;
+}
+
+.bubble:hover {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+/* =========================================
+   ACTIVIDAD: CROWDIN O JOOMLA
+   ========================================= */
+
+.choices {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.choice {
+  flex: 1;
+  padding: 13px 18px;
+  font-weight: bold;
+  background: white;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+}
+
+.choice:hover {
+  background: var(--lilac);
+}
+
+.choice.selected {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.answer {
+  margin-top: 15px;
+  padding: 14px;
+  line-height: 1.5;
+  background: #edf2ff;
+  border-left: 4px solid var(--blue);
+}
+
+/* =========================================
+   CIERRE
+   ========================================= */
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 16px 0;
+  font-size: 23px;
+}
+
+.result b {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--lilac);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+}
+
+#reset {
+  margin: 12px 0 0 8px;
+}
+
+/* =========================================
+   NAVEGACIÓN INFERIOR
+   ========================================= */
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 24px;
+  background: #faf9ff;
+  border-top: 2px solid #e5e1ee;
+}
+
+.navdots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.navdots button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.navdots button.active {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.arrow {
+  flex-shrink: 0;
+  padding: 10px 15px;
+  font-weight: bold;
+  background: white;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--lilac);
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.pagecount {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* =========================================
+   VENTANA EMERGENTE GENERAL
+   ========================================= */
+
+.modal {
+  width: min(1100px, 90vw);
+  max-height: 90vh;
+  max-height: 90dvh;
+  padding: 0;
+  color: var(--ink);
+  background: white;
+  border: 3px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 10px 10px var(--pink);
+  overflow-y: auto;
+}
+
+.modal::backdrop {
+  background: #25233d99;
+}
+
+.modal[open] {
+  animation: popupAppear 0.22s ease-out;
+}
+
+.modal .bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#modalTitle {
+  flex: 1;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.close {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: white;
+  font-size: 23px;
+  background: var(--ink);
+  border: 0;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background: var(--blue);
+}
+
+.modal-body {
+  padding: 28px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.modal-body img {
+  display: block;
+  max-width: 100%;
+  max-height: 65vh;
+  height: auto;
+  margin: auto;
+  object-fit: contain;
+}
+
+.modal-body p {
+  margin: 12px 0;
+}
+
+.modal-body .callout {
+  margin: 0;
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popupAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   PANTALLAS GRANDES
+   ========================================= */
+
+@media (min-width: 1500px) {
+  .slide {
+    min-height: 650px;
+  }
+
+  .concept-content {
+    min-height: 470px;
+  }
+
+  .concept-icon {
+    margin-top: 85px;
+  }
+}
+
+/* =========================================
+   TABLETAS
+   ========================================= */
+
+@media (max-width: 1000px) {
+  .slide {
+    padding: 30px 25px;
+  }
+
+  .joomla-columns {
+    gap: 16px;
+  }
+
+  .concept-content h2 {
+    font-size: 24px;
+    letter-spacing: -0.8px;
+  }
+
+  .concept-bar {
+    padding: 18px 12px;
+  }
+
+  .concept-icon {
+    padding: 25px;
+  }
+
+  .concept-popup p {
+    font-size: 16px;
+  }
+
+  .joomla-intro {
+    gap: 25px;
+  }
+
+  .joomla-list {
+    font-size: 24px;
+  }
+}
+
+/* =========================================
+   MÓVILES
+   ========================================= */
+
+@media (max-width: 750px) {
+
+  .split,
+  .joomla-intro,
+  .joomla-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .slide {
+    min-height: 500px;
+    padding: 25px 20px;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .bar {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .bar-title {
+    font-size: 11px;
+  }
+
+  .dots {
+    gap: 7px;
+  }
+
+  .dots i {
+    width: 17px;
+    height: 17px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .hot {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    border-width: 2px;
+    box-shadow: 0 0 0 3px #f2bce89c;
+  }
+
+  .bottom {
+    gap: 10px;
+    padding: 14px 10px;
+  }
+
+  .arrow {
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .navdots {
+    gap: 6px;
+  }
+
+  .navdots button {
+    width: 10px;
+    height: 10px;
+  }
+
+  .string {
+    gap: 12px;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .intro {
+    padding-top: 35px;
+  }
+
+  .modal-body {
+    padding: 17px;
+    font-size: 18px;
+  }
+
+  #modalTitle {
+    font-size: 17px;
+  }
+
+  .modal .dots {
+    display: none;
+  }
+
+  .window {
+    box-shadow:
+      7px 7px var(--pink),
+      10px 10px var(--line);
+  }
+
+  .joomla-intro {
+    margin-top: 25px;
+  }
+
+  .joomla-list {
+    gap: 20px;
+  }
+
+  .joomla-columns {
+    gap: 28px;
+  }
+
+  .concept-content {
+    min-height: 330px;
+    padding: 25px 20px;
+  }
+
+  .concept-content h2 {
+    font-size: 32px;
+  }
+
+  .concept-icon {
+    width: 160px;
+    margin: 30px 0 25px;
+    padding: 30px;
+  }
+
+  .concept-popup {
+    top: 75px;
+    left: 15px;
+    right: 15px;
+    max-height: calc(100% - 90px);
+  }
+
+  .concept-popup p {
+    font-size: 18px;
+  }
+
+  .result {
+    font-size: 20px;
+  }
+
+  #reset {
+    margin-left: 0;
+  }
+}
+
+/* =========================================
+   ACCESIBILIDAD: MOVIMIENTO REDUCIDO
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
