@@ -105,13 +105,14 @@ const details = {
     `,
   ],
 
-  docs: [
+   docs: [
     "Documentos recibidos por Mattermost",
     `
       <p>
         Documentos enviados por el equipo de Ucrania
         u otros miembros del equipo.
       </p>
+    `,
   ],
 
   editorImg: [
