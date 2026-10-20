@@ -83,9 +83,18 @@ const details = {
     "Reviso los ajustes del artículo, como categoría, idioma y estado de publicación.",
   ],
 
-  technical: [
+   technical: [
     "5 · Estructura del artículo",
-    "El contenido también contiene HTML y elementos técnicos que deben conservarse al preparar la publicación.",
+    `
+      <p>
+        El contenido también contiene HTML y elementos técnicos que deben
+        conservarse al preparar la publicación.
+      </p>
+      <img
+        src="images/editor-joomla.png"
+        alt="Estructura HTML del artículo en el editor de Joomla"
+      />
+    `,
   ],
 
   difference: [
