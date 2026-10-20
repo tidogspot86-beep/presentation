@@ -112,17 +112,6 @@ const details = {
         Documentos enviados por el equipo de Ucrania
         u otros miembros del equipo.
       </p>
-
-      <img
-        src="images/documents.png"
-        alt="Ejemplo de documento y ubicación en Excel LATAM"
-      />
-
-      <p>
-        <strong>Ubicación:</strong>
-        Excel LATAM → Other translations.
-      </p>
-    `,
   ],
 
   editorImg: [
