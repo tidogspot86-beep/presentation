@@ -35,7 +35,7 @@ const details = {
 
   crowdin: [
     "Textos de la plataforma",
-    "Trabajo las traducciones de cadenas de texto en Crowdin: botones, etiquetas y mensajes de las herramientas.",
+    "Trabajo las traducciones de strings o líneas de texto en Crowdin: botones, etiquetas y mensajes de las herramientas, etc.",
   ],
 
   new: [
